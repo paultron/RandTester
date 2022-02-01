@@ -18,12 +18,13 @@ See <http://creativecommons.org/publicdomain/zero/1.0/>. */
    output to fill s. */
 
 using System;
+using XoRand.Base;
 
-namespace XoRand
+namespace XoRand.X64
 {
     public class Xo256pp : XoBase
     {
-        private const ulong UBIG = ulong.MaxValue;
+        private const ulong UMAX = ulong.MaxValue;
 
         /// <summary>
         /// Create with no inital state.
@@ -90,7 +91,7 @@ namespace XoRand
         }
         protected override double Sample()
         {
-            return Xoro64Next() * (1.0 / UBIG);
+            return Xoro64Next() * (1.0 / UMAX);
         }
         public double SampleShifted()
         {
@@ -102,6 +103,6 @@ namespace XoRand
             return Sample();
             //return (XoroNext() & ((1L << 53) - 1)) * (1.00 / (1L << 53));
         }
-        //public ulong NextuLong() => Xoro64Next();
+        public ulong NextuLong() => Xoro64Next();
     }
 }

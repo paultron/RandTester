@@ -9,7 +9,7 @@ See <http://creativecommons.org/publicdomain/zero/1.0/>. */
 using System.Runtime.CompilerServices;
 using System;
 
-namespace XoRand
+namespace XoRand.Base
 {
     public abstract class XoBase : Random
     {

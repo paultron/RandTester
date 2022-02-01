@@ -1,20 +1,18 @@
-using XoRand;
+using XoRand.X64;
 
 namespace RandTester
 {
     public partial class XoroViewer256 : Form
     {
-
-        Xo256pp newrand = new();
+        readonly Xo256pp newrand = new();
 
         public XoroViewer256()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void UpdateStateFields()
         {
-
             // adds the current state and number to the history
             if (!string.IsNullOrWhiteSpace(textBox1.Text) &&
                 !string.IsNullOrWhiteSpace(textBox2.Text) &&
@@ -44,6 +42,12 @@ namespace RandTester
                 textBox4.Text = newrand.StateX64[3].ToString();
 
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            UpdateStateFields();
 
 
         }

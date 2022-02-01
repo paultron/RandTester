@@ -18,12 +18,13 @@ See <http://creativecommons.org/publicdomain/zero/1.0/>. */
    output to fill s. */
 
 using System;
+using XoRand.Base;
 
-namespace XoRand
+namespace XoRand.X32
 {
     public class Xo128pp : XoBase
     {
-        private const int MBIG = int.MaxValue;
+        private const int IMAX = int.MaxValue;
 
         /// <summary>
         /// Create with no inital state.
@@ -89,7 +90,7 @@ namespace XoRand
         {
             //double r = (Xoro64Next() >> 11) * (1.0 / ((ulong)1 << 53));
             //return r;
-            return Xoro32Next() * (1.0 / MBIG);
+            return Xoro32Next() * (1.0 / IMAX);
             //return (XoroNext() & ((1UL << 53) - 1)) * (1.00 / (1UL << 53));
         }
         public override double NextDouble()
