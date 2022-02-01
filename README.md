@@ -22,7 +22,6 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
 
 
 
@@ -56,19 +55,11 @@
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -77,9 +68,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `paultron`, `RandTester`, `twitter_handle`, `linkedin_username`, `email`, `email_client`, `RandTester`, `PRNG Tester GUI`
+[![Product Name Screen Shot][product-screenshot]](https://github.com/paultron/RandTester)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -88,6 +77,8 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 ### Built With
 
 * C# .Net Core 6.0
+* Windows Forms
+* Love
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -96,8 +87,7 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+Compiled in Visual Studio 22 with no external resources. YMMV.
 
 
 <!-- USAGE EXAMPLES -->
@@ -114,9 +104,10 @@ For now, open and fill state boxes then click 'Mix All' to see the output
 
 - [ ] Random data output to file(s)
 - [ ] Random data input for viewing/testing
+- [ ] Tests
 - [ ] Charts
     - [ ] Lots of charts
-
+- [ ] More algorithms to choose from
 See the [open issues](https://github.com/paultron/RandTester/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -160,18 +151,6 @@ Project Link: [https://github.com/paultron/RandTester](https://github.com/paultr
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-* []()
-* []()
-* []()
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/paultron/RandTester.svg?style=for-the-badge
@@ -184,6 +163,4 @@ Project Link: [https://github.com/paultron/RandTester](https://github.com/paultr
 [issues-url]: https://github.com/paultron/RandTester/issues
 [license-shield]: https://img.shields.io/github/license/paultron/RandTester.svg?style=for-the-badge
 [license-url]: https://github.com/paultron/RandTester/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
 [product-screenshot]: images/screenshot1.png
