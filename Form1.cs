@@ -2,12 +2,12 @@ using XoRand;
 
 namespace RandTester
 {
-    public partial class Form1 : Form
+    public partial class XoroViewer256 : Form
     {
 
         Xo256pp newrand = new();
 
-        public Form1()
+        public XoroViewer256()
         {
             InitializeComponent();
         }

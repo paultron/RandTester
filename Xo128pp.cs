@@ -21,15 +21,15 @@ using System;
 
 namespace XoRand
 {
-    public class Xo256pp : XoBase
+    public class Xo128pp : XoBase
     {
-        private const ulong UBIG = ulong.MaxValue;
+        private const int MBIG = int.MaxValue;
 
         /// <summary>
         /// Create with no inital state.
         /// TODO: Generate state.
         /// </summary>
-        public Xo256pp()
+        public Xo128pp()
             : this((ulong)Environment.TickCount)
         {
         }
@@ -38,7 +38,7 @@ namespace XoRand
         /// Create and specify inital state.
         /// </summary>
         /// <param name="InitSeed"></param>
-        public Xo256pp(ulong InitSeed)
+        public Xo128pp(ulong InitSeed)
         {
             //ulong[] s = new ulong[4];
             // SplitMix64 sm64 = new SplitMix64(InitSeed);
@@ -46,42 +46,39 @@ namespace XoRand
         }
 
         /// <summary>
-        /// Returns the next whole number. xoro256++
+        /// Returns the next whole number. xoro128++
         /// </summary>
         /// <returns>Random integer</returns>
-        public ulong Xoro64Next()
+        public uint Xoro32Next()
         {
-            // 256++
-            ulong Result = Rotl64(StateX64[0] + StateX64[3], 23) + StateX64[0];
-            // 256**
-            //ulong Result = Rotl64(StateX64[1] * 5, 7) * 9;
+            uint Result = Rotl32(StateX32[0] + StateX32[3], 7) + StateX32[0];
 
-            ulong t = StateX64[1] << 17;
+            uint t = StateX32[1] << 9;
 
-            StateX64[2] ^= StateX64[0];
-            StateX64[3] ^= StateX64[1];
-            StateX64[1] ^= StateX64[2];
-            StateX64[0] ^= StateX64[3];
+            StateX32[2] ^= StateX32[0];
+            StateX32[3] ^= StateX32[1];
+            StateX32[1] ^= StateX32[2];
+            StateX32[0] ^= StateX32[3];
 
-            StateX64[2] ^= t;
+            StateX32[2] ^= t;
 
-            StateX64[3] = Rotl64(StateX64[3], 45);
+            StateX32[3] = Rotl32(StateX32[3], 11);
 
             return Result;
         }
         public override int Next()
         {
-            return (int)(Sample() * int.MaxValue);
+            return (int)(Xoro32Next() % int.MaxValue);
         }
         public override int Next(int minValue, int maxValue)
         {
             int range = maxValue - minValue;
 
-            return (int)(Next() * range) + minValue;
+            return (int)(Xoro32Next() * range) + minValue;
         }
         public override void NextBytes(byte[] buffer)
         {
-            if (buffer == null) throw new ArgumentNullException("buffer");
+            //if (buffer == null) throw new ArgumentNullException("buffer");
             //Contract.EndContractBlock();
             for (int i = 0; i < buffer.Length; i++)
             {
@@ -90,11 +87,9 @@ namespace XoRand
         }
         protected override double Sample()
         {
-            return Xoro64Next() * (1.0 / UBIG);
-        }
-        public double SampleShifted()
-        {
-            return (Xoro64Next() >> 11) * (1.0 / ((ulong)1 << 53));
+            //double r = (Xoro64Next() >> 11) * (1.0 / ((ulong)1 << 53));
+            //return r;
+            return Xoro32Next() * (1.0 / MBIG);
             //return (XoroNext() & ((1UL << 53) - 1)) * (1.00 / (1UL << 53));
         }
         public override double NextDouble()
@@ -102,6 +97,6 @@ namespace XoRand
             return Sample();
             //return (XoroNext() & ((1L << 53) - 1)) * (1.00 / (1L << 53));
         }
-        //public ulong NextuLong() => Xoro64Next();
+        //public override ulong NextuLong() => Xoro64Next();
     }
 }

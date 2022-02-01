@@ -7,6 +7,7 @@ worldwide. This software is distributed without any warranty.
 See <http://creativecommons.org/publicdomain/zero/1.0/>. */
 
 using System.Runtime.CompilerServices;
+using System;
 
 namespace XoRand
 {
@@ -16,17 +17,22 @@ namespace XoRand
         public uint[] StateX32 = new uint[4];
         public ulong[] StateX64 = new ulong[4];
 
-        private static readonly ulong[] SHORTJ64 = { 
+        private static readonly ulong[] SHORTJ64 = {
             0x180EC6D33CFD0ABA, 0xd5a61266f0c9392c, 0xa9582618e03fc9aa, 0x39abdc4529b1661c };
-        private static readonly ulong[] LONGJ64 = { 
+        private static readonly ulong[] LONGJ64 = {
             0x76e15d3efefdcbbf, 0xc5004e441c522fb3, 0x77710069854ee241, 0x39109bb02acbe635 };
+
+        private static readonly uint[] SHORTJ32 = {
+            0x8764000b, 0xf542d2d3, 0x6fa035c3, 0x77f2db5b };
+        private static readonly uint[] LONGJ32 = {
+            0xb523952e, 0x0b6f099f, 0xccf5a0ef, 0x1c580662 };
 
         // Abstract methods
         public abstract override int Next();
         public abstract override int Next(int minValue, int maxValue);
         public abstract override void NextBytes(byte[] buffer);
         public abstract override double NextDouble();
-        public abstract ulong NextuLong();
+        //public virtual ulong NextuLong();
         protected abstract override double Sample();
 
         // Base mixing methods. Maybe move to classes
@@ -120,6 +126,32 @@ namespace XoRand
                 StateX64[3] = s3;
             }
         }
+        public void Jump32(bool Long)
+        {
+            _ = new ulong[4];
+            uint[] JUMP = Long ? SHORTJ32 : LONGJ32;
 
+            uint s0 = 0, s1 = 0, s2 = 0, s3 = 0;
+
+            for (int i = 0; i < 4; i++)
+            {
+                for (int b = 0; b < 32; b++)
+                {
+                    if ((JUMP[i] & 1UL << b) > 0)
+                    {
+                        s0 ^= StateX32[0];
+                        s1 ^= StateX32[1];
+                        s2 ^= StateX32[2];
+                        s3 ^= StateX32[3];
+                    }
+                    _ = Next();
+                }
+
+                StateX32[0] = s0;
+                StateX32[1] = s1;
+                StateX32[2] = s2;
+                StateX32[3] = s3;
+            }
+        }
     }
 }
