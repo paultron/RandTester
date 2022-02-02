@@ -28,19 +28,15 @@ namespace RandTester
                         };
                 // update label
                 label1.Text = newrand.NextuLong().ToString();
-
+                if (StateBox.Items.Count == 20) StateBox.Items.RemoveAt(19);
                 // add state and result to list
-                listBox1.Items.Insert(0, textBox1.Text);
-                listBox2.Items.Insert(0, textBox2.Text);
-                listBox3.Items.Insert(0, textBox3.Text);
-                listBox4.Items.Insert(0, textBox4.Text);
-                listBox5.Items.Insert(0, label1.Text);
+                StateBox.Items.Insert(0, $"{textBox1.Text,-20} | {textBox2.Text,-20} | {textBox3.Text,-20} | {textBox4.Text,-20} || {label1.Text,20}");
 
                 textBox1.Text = newrand.StateX64[0].ToString();
                 textBox2.Text = newrand.StateX64[1].ToString();
                 textBox3.Text = newrand.StateX64[2].ToString();
                 textBox4.Text = newrand.StateX64[3].ToString();
-
+                label1.Text = newrand.NextuLong().ToString();
             }
         }
 
@@ -49,23 +45,18 @@ namespace RandTester
 
             UpdateStateFields();
 
-
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();
-            listBox2.Items.Clear();
-            listBox3.Items.Clear();
-            listBox4.Items.Clear();
-            listBox5.Items.Clear();
+            StateBox.Items.Clear();
 
             textBox1.Text = "0";
             textBox2.Text = "0";
             textBox3.Text = "0";
             textBox4.Text = "1";
 
-            label1.Text = "Mix First!";
+            label1.Text = "8388608";
         }
 
     }
