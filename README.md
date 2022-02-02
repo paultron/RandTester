@@ -21,16 +21,8 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
+[![GPL License][license-shield]][license-url]
 
-
-
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="https://github.com/paultron/RandTester">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
 
 <h3 align="center">RandTester</h3>
 
@@ -69,7 +61,9 @@
 ## About The Project
 
 [![Product Name Screen Shot][product-screenshot]](https://github.com/paultron/RandTester)
-
+Version 1 lets you input values into the four 64-bit state array and view the resulting outputs.
+Currently only using Xoshiro256++
+Eventually you will be able to choose the algorithm, and output to a file. 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
@@ -135,7 +129,7 @@ Don't forget to give the project a star! Thanks again!
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the GNU GPL 3.0 License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -163,4 +157,4 @@ Project Link: [https://github.com/paultron/RandTester](https://github.com/paultr
 [issues-url]: https://github.com/paultron/RandTester/issues
 [license-shield]: https://img.shields.io/github/license/paultron/RandTester.svg?style=for-the-badge
 [license-url]: https://github.com/paultron/RandTester/blob/master/LICENSE.txt
-[product-screenshot]: images/screenshot1.png
+[product-screenshot]: images/screenshot2.png
